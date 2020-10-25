@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center rounded bg-light">
+    <h1 class="display-4">CS460 Homework 4</h1>
+    <h1 class="display-4" style="color:slategray">2020</h1>
+    
+    <p>A couple-forms and some simple server-side logic --learning the basics of GET, POST, form data and parameter and model binding. Doing it all with ASP.NET MVC Core</p>
+    <center>
+        <button class="form-control btn-success" style="width : auto" onclick="location.href = 'https://wou-cs46x-resources.netlify.app/cs460/hw/hw4.html'">Here's the assignment</button>
+    </center>
+    
+
+    
+</div>
+
+<br/>
+<br/>
+<br/>
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <h2>RGB Color</h2>
+        <p>
+            Want to know what a particular RGB color looks like? How about it's web
+            color format? Here you go. Uses query strings to send form data to the server, which reads them
+            in the Request object. It then performs the calculation and formats the result in a view
+            to return to you.
+        </p>
+        <input type="button" value="Try it out >>" class="form-control btn-primary" style="width:auto" onclick="location.href = 'http://localhost:1415/home/RGBColor'" />
+        </div>
+    <div class="col-lg-6 col-md-12">
+        <h2>Color Interpolation</h2>
+        <p>
+            Typical online color choosers are way too useful. We wanted something fun
+            and completely useless. This form POST's the data to the server and uses parameter binding to make it easy.
+
+        </p>
+
+        <input type="button" value="Check it out >>" class="form-control btn-primary" style="width:auto" onclick = "location.href = 'http://localhost:1415/home/colorInterpolator'" />
+
+    </div>
+</div>

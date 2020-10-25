@@ -1,0 +1,71 @@
+﻿@model HW4MVC.Models.ClsRGB
+
+@{
+    ViewData["Title"] = "RGBColor";
+}
+
+<h1>Enter an RGB Color to see what it looks like</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <form asp-action="RGBColor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-group">
+                <span class="input-group-addon">R</span>
+                <input asp-for="Red" class="form-control" max="255" min="0"/>
+                <span asp-validation-for="Red" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">G</span>
+                <input asp-for="Green" class="form-control" max="255" min="0"/>
+                <span asp-validation-for="Green" class="text-danger"></span>
+            </div>
+            <br />
+            
+            <div class="input-group">
+                <span class="input-group-addon">B</span>
+                <input asp-for="Blue" class="form-control" max="255" min="0"/>
+                <span asp-validation-for="Blue" class="text-danger"></span>
+            </div>
+            <br />
+            
+            <div class="form-group">
+                <input type="submit" value="Display" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-6 col-md-12">
+        <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+        </canvas>
+        <p id="resultHex"></p>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>
+
+@if (ViewBag.Color != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        var c = document.getElementById("myCanvas");
+        var p = document.getElementById("resultHex");
+        var ctx = c.getContext("2d");
+
+        ctx.beginPath();
+        ctx.rect(25, 20, 150, 100);
+        p.innerHTML = "#"+"@ViewBag.Color";
+        ctx.fillStyle = "#"+"@ViewBag.Color";
+        ctx.fill();
+    }
+
+    </script>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
